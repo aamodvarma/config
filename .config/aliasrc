@@ -1,0 +1,21 @@
+#!/bin/bash
+
+alias vim="lvim"
+
+alias za="zathura"
+alias vi="lvim"
+
+alias ls="exa -l --color=always --group-directories-first"
+alias l="exa"
+alias c='xclip -selec clip'
+alias cp='rsync --progress'
+alias in='sudo pacman -S '
+#alias in='sudo emerge -avq '
+
+
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+export PATH=$HOME/.local/bin/:$PATH
+
+alias v='lvim'
+alias tsm='transmission-remote'

@@ -1,0 +1,173 @@
+configuration {
+	font:                   "Mono 11";
+	modi:                   "drun,windowcd,window";
+	show-icons:             true;
+	display-drun:           "𝛌";
+	drun-display-format:    "{name}";
+	display-windowcd:       "𝛅";
+	display-window:         "γ";
+	window-format:          "[{w} ... {c} ... {t}";
+	click-to-exit:          true;
+	combi-hide-mode-prefix: false;
+}
+
+* {
+	bg: #1a1a24;
+	fg: #e6e6f1;
+	accent: #e6e6f1;
+	background-color: @bg;
+}
+
+window {
+	border: 0px;
+	border-color: #b1dba4;
+	border-radius: 0px;
+	padding: 0px;
+	width: 35%;
+	height: 35%;
+}
+
+prompt {
+	spacing: 0;
+	border: 0;
+	text-color: @fg;
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: " ";
+	/*margin: 0px 4px 0px 0px;*/
+	text-color: inherit;
+}
+
+entry {
+	spacing: 0;
+	text-color: @fg;
+}
+
+case-indicator {
+	spacing: 0;
+	text-color: @fg;
+}
+
+inputbar {
+	spacing: 0px;
+	text-color: @fg;
+	padding: 1em;
+	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+mainbox {
+	/*border: 1em;*/
+	border-color: @fg;
+	/*padding: 5em;*/
+}
+
+listview {
+	lines: 5;
+	columns: 2;
+	fixed-height: 0;
+	border: 0px;
+	border-color: @bg;
+	spacing: 0.2em;
+	scrollbar: false;
+	padding: 1em;
+}
+
+element-text {
+	background-color: #00000000;
+	text-color: inherit;
+	vertical-align: 0.5;
+}
+
+element-icon {
+	background-color: #00000000;
+	text-color: inherit;
+	/*size: 2.3ch;*/
+	size: 1.2em;
+}
+
+element {
+	border: 0px;
+	padding: 1px;
+}
+
+element normal.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element normal.urgent {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element normal.active {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element selected.normal {
+	background-color: @fg;
+	text-color: @bg;
+}
+
+element selected.urgent {
+	background-color: @fg;
+	text-color: @bg;
+}
+
+element selected.active {
+	background-color: @fg;
+	text-color: @bg;
+}
+
+element alternate.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element alternate.active {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element alternate.urgent {
+	background-color: @bg;
+	text-color: @bg;
+}
+
+sidebar {
+	border: 0px;
+	border-color: @accent;
+	border-radius: 0px;
+}
+
+button {
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	margin: 5px;
+	padding: 5px;
+	text-color: @fg;
+	border: 3px;
+	border-radius: 0px;
+	border-color: @fg;
+}
+
+button selected {
+	text-color: @fg;
+	border: 3px;
+	border-radius: 20px;
+	border-color: @accent;
+}
+
+message {
+	border: 0px;
+	border-color: @accent;
+	padding: 1px;
+}
+
+textbox {
+	text-color: @fg;
+}
+
