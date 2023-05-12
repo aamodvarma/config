@@ -5,7 +5,9 @@ xset r rate 300 50 &
 sudo logid &
 pulseeffects --gapplication-service &!
 exec dbus-launch --sh-syntax --exit-with-session awesome
-picom --experimental-backends &!
+
+#exec dbus-launch --sh-syntax --exit-with-session  bspwm
+#picom --experimental-backends &!
 ~/.fehbg
 keymap.sh
 export CHROME_EXECUTABLE=/bin/google-chrome-stable
