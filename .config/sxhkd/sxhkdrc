@@ -1,0 +1,186 @@
+#
+# wm independent hotkeys
+#
+
+# printscreen
+@Print
+	screen
+
+shift + @Print
+	screen -s
+  #alacritty
+
+control + @Print
+	screenshot window
+
+# brightness keys
+XF86MonBrightnessUp
+  brightnessctl  set +10%
+
+XF86MonBrightnessDown
+  brightnessctl  set 10%-
+
+
+
+# media keys
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+XF86AudioPlay
+	playerctl play-pause
+
+# volume keys
+XF86AudioRaiseVolume
+  amixer -D pulse sset Master 5%+
+
+
+XF86AudioLowerVolume
+  amixer -D pulse sset Master 5%-
+
+XF86AudioMute
+  amixer set Master toggle
+
+# lockscreen
+super + control + l
+  slock
+
+super + control + g
+  sudo cat /sys/kernel/debug/dri/2/amdgpu_gpu_recover
+
+super +  t
+	{bspc rule -a \* -o state=floating sticky=on layer=above rectangle=720x500+600+300 && alacritty -e nvim ~/Documents/sb/notes.md }
+
+
+super + shift + x
+	powermenu
+
+super + e
+    nautilus
+
+super + shift + t
+  task.sh
+
+# program launcher
+alt + @space
+	rofi -show 
+
+# make sxhkd reload its configuration files:
+#super + Escape
+  #brave 
+	#~/.config/polybar/launch.sh
+  #polybar example &!
+	#pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + r
+	bspc wm -r
+
+super + shift + control + q
+	bspc quit
+
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+#
+#
+# state/flags
+#
+
+super + m
+  bspc node -t \~fullscreen
+	#bspc node focused.tiled -t fullscreen || bspc node focused.fullscreen -t tiled
+
+super + s
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node focused -t floating; \
+    else \
+        bspc node focused -t tiled; \
+    fi
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+super + n
+    /home/ajrv/.config/bspwm/scripts/switch.sh
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+
+
+super + comma
+    bspc monitor --focus prev
+
+super +period 
+    bspc monitor --focus  next 
+
+
+super + shift + {comma,period}
+    bspc node --to-monitor next
+
+
+
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# notifications
+ctrl + space
+  dunstctl close
+
+ctrl + shift + space
+  dunstctl close-all
+
+ctrl + shift + period
+  dunstctl context
+
+ctrl + grave
+  dunstctl history-pop
+
+ctrl + alt + x
+	xkill
+
+super + Return
+	alacritty 
+
+super + o 
+	obsidian 
+
+# browser
+super + w
+	$BROWSER
+
+super + {e, m, c, n}
+	$TERMINAL -e {lf-ueberzug, neomutt, calcurse, ncmpcpp}
