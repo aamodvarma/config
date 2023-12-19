@@ -22,6 +22,13 @@ export KEYTIMEOUT=1
 export CHROME_EXECUTABLE=/bin/google-chrome-stable
 export WINEPREFIX=/home/ajrv/Games/
 export PATH="$PATH:/home/ajrv/.config/flutter/bin"
+export PATH="$PATH:/home/ajrv/miniconda3/bin/"
+export PATH="$PATH:/home/ajrv/.local/scripts/"
+export JAVAFX_HOME=/home/ajrv/Projects/uni/1331C/JavaFx/"javafx-sdk-11.0.2"/
+
+export OPENAI_KEY=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
+export FZF_DEFAULT_OPS="--extended"
+
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -76,3 +83,21 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 export PATH=$PATH:/home/ajrv/.spicetify
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ajrv/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ajrv/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ajrv/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ajrv/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

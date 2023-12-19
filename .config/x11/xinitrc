@@ -1,13 +1,26 @@
+
 #!/bin/sh
-
+setxkbmap
 dunst &
-xset r rate 300 50 &
-sudo logid &
-pulseeffects --gapplication-service &!
-exec dbus-launch --sh-syntax --exit-with-session awesome
+#sudo logid &
+xrandr --output eDP --set TearFree on
+xrandr --output DisplayPort-2 --right-of eDP --mode 1920x1080 --rate 75
 
-#exec dbus-launch --sh-syntax --exit-with-session  bspwm
-#picom --experimental-backends &!
+xrandr --output DisplayPort-2 --set TearFree on
 ~/.fehbg
-keymap.sh
-export CHROME_EXECUTABLE=/bin/google-chrome-stable
+
+idd=$(xinput | grep "Touchpad" | awk '{print $6}' | sed -s 's/id=//')
+xinput --set-prop $idd "libinput Natural Scrolling Enabled" 1
+keymap
+#
+#picom &
+# picom -b --experimental-backends
+
+# ~/.config/polybar/launch.sh
+
+libinput-gestures &
+
+xsetroot -cursor_name left_ptr &
+# exec dbus-launch --sh-syntax  bspwm
+exec dbus-launch --sh-syntax  awesome
+#exec bspwm
