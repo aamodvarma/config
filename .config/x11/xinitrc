@@ -16,11 +16,11 @@ keymap
 #picom &
 # picom -b --experimental-backends
 
-# ~/.config/polybar/launch.sh
-
+~/.config/polybar/launch.sh
+#
 libinput-gestures &
 
 xsetroot -cursor_name left_ptr &
 # exec dbus-launch --sh-syntax  bspwm
-exec dbus-launch --sh-syntax  awesome
+exec dbus-launch --sh-syntax  bspwm
 #exec bspwm

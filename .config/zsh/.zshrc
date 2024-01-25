@@ -101,3 +101,4 @@ unset __conda_setup
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+noter() { f=$HOME/Documents/sb/notes/$(date +"%Y-%m-%d.md") ; { echo; date +"# %H:%M" ; echo ; } >> "$f" ; vim + "$f" ; }
