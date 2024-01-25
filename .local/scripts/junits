@@ -1,0 +1,5 @@
+#!/bin/bash
+
+javac -cp /home/ajrv/Projects/uni/1332/junit-platform-console-standalone-1.9.3.jar *.java
+
+java -jar /home/ajrv/Projects/uni/1332/junit-platform-console-standalone-1.9.3.jar --classpath ./ --select-class $1
