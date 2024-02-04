@@ -2,7 +2,10 @@
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@ %{$fg[blue]%}%M    %{$fg[magenta]%}%2d    %{$fg[red]%}] %{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%2d%{$fg[red]%}] %{$reset_color%}$%b "
+#PS1="%B%{$fg[red]%}[%{$fg[green]%}%2d%{$fg[red]%}]%{$reset_color%}$%b "
 
 # History in cache directory:
 HISTSIZE=10000
@@ -22,11 +25,7 @@ export KEYTIMEOUT=1
 export CHROME_EXECUTABLE=/bin/google-chrome-stable
 export WINEPREFIX=/home/ajrv/Games/
 export PATH="$PATH:/home/ajrv/.config/flutter/bin"
-export PATH="$PATH:/home/ajrv/miniconda3/bin/"
-export PATH="$PATH:/home/ajrv/.local/scripts/"
-export JAVAFX_HOME=/home/ajrv/Projects/uni/1331C/JavaFx/"javafx-sdk-11.0.2"/
-export FZF_DEFAULT_OPS="--extended"
-
+export PATH="$HOME/tools/node-v14.15.4-linux-x64/bin:$PATH"
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -82,6 +81,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export PATH=$PATH:/home/ajrv/.spicetify
 
+if [ $(tty) = /dev/tty1 ]; then
+    startx
+    exit 0;
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/ajrv/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -97,6 +101,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-noter() { f=$HOME/Documents/sb/notes/$(date +"%Y-%m-%d.md") ; { echo; date +"# %H:%M" ; echo ; } >> "$f" ; vim + "$f" ; }
